@@ -754,10 +754,8 @@ class LxcContainerManagement(object):
                     line_index = container_config.index(option_line)
                     # If the sanitized values don't match replace them
                     if value != config_value:
-                        line_index += 1
-                        if new_entry not in container_config:
-                            config_change = True
-                            container_config.insert(line_index, new_entry)
+                        container_config[line_index] = new_entry
+                        config_change = True
                     # Break the flow as values are written or not at this point
                     break
             else:
